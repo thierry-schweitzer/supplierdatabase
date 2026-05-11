@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supplier Database</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="logo">Supplier <span>Database</span></div>
+  </div>
+  <div class="header-stats">
+    <div class="hstat"><div class="hstat-n" id="stat-total">0</div><div class="hstat-l">Total</div></div>
+    <div class="hstat"><div class="hstat-n" id="stat-vetted">0</div><div class="hstat-l">Vetted</div></div>
+    <div class="hstat"><div class="hstat-n" id="stat-used">0</div><div class="hstat-l">Used Before</div></div>
+    <div class="hstat"><div class="hstat-n" id="stat-filtered">0</div><div class="hstat-l">Showing</div></div>
+  </div>
+</div>
+
+<div class="app">
+  <!-- SIDEBAR FILTERS -->
+  <div class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-title">Search</div>
+      <input class="search-box" id="search" placeholder="Company name, description, categories…" type="text">
+    </div>
+    
+    <div class="sidebar-section">
+      <div class="sidebar-title">Region</div>
+      <div class="check-list" id="region-list"></div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Country (service area)</div>
+      <input class="search-box" id="country-search" placeholder="Type a country…" type="text" style="margin-bottom:.4rem">
+      <div class="check-list" id="country-list" style="max-height:150px"></div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Service Group</div>
+      <div class="check-list" id="svcgrp-list"></div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Status</div>
+      <div class="check-list" id="status-list">
+        <label class="check-item"><input type="checkbox" value="vetted" id="chk-vetted"> Vetted</label>
+        <label class="check-item"><input type="checkbox" value="used" id="chk-used"> Previously Used</label>
+        <label class="check-item"><input type="checkbox" value="nda" id="chk-nda"> Has NDA</label>
+        <label class="check-item"><input type="checkbox" value="teaming" id="chk-teaming"> Teaming Agreement</label>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Country Location (HQ)</div>
+      <input class="search-box" id="hq-search" placeholder="Filter by HQ country…" type="text" style="margin-bottom:.4rem">
+      <div class="check-list" id="hq-list" style="max-height:130px"></div>
+    </div>
+
+    <div class="sidebar-section" style="border-bottom:none">
+      <button class="clear-btn" id="clear-filters" style="width:100%">✕ Clear all filters</button>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main">
+    <div class="toolbar">
+      <div class="result-count" id="result-count">Loading…</div>
+      <div class="sort-row">
+        <label>Sort:</label>
+        <select id="sort-sel">
+          <option value="id">ID</option>
+          <option value="name">Company Name</option>
+          <option value="region">Region</option>
+          <option value="priority">Priority</option>
+          <option value="vetted">Vetted first</option>
+        </select>
+      </div>
+    </div>
+    <div class="content-area">
+      <div class="list-panel" id="list-panel"></div>
+      <div class="detail-panel" id="detail-panel">
+        <div class="detail-empty">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <div>Select a supplier to view details</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./app.js"></script>
+</body>
+</html>
